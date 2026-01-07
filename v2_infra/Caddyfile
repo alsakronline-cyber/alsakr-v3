@@ -1,0 +1,20 @@
+{
+    email admin@alsakronline.com
+}
+
+app.alsakronline.com {
+    # Open WebUI Main Interface
+    reverse_proxy open-webui:8080
+
+    encode gzip zstd
+}
+
+api.app.alsakronline.com {
+    reverse_proxy backend:8000
+    encode gzip
+}
+
+workflows.app.alsakronline.com {
+    reverse_proxy n8n:5678
+    encode gzip
+}
