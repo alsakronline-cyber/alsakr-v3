@@ -14,7 +14,10 @@ git pull origin main
 
 # Stop Old Stack
 echo "🛑 Stopping containers..."
-cd v2_infra
+# If we are already in v2_infra, don't try to cd into it again
+if [[ "$PWD" != *"/v2_infra" ]]; then
+    cd v2_infra
+fi
 docker-compose down
 
 # Cleanup
